@@ -9,7 +9,7 @@ Javascript Helper.
 Install via composer:
 
 ```sh
-composer install minphp/javascript:dev-master
+composer require minphp/javascript:dev-master
 ```
 
 ## Basic Usage
