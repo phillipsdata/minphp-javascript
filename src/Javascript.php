@@ -1,7 +1,7 @@
 <?php
-namespace minphp\Javascript;
+namespace Minphp\Javascript;
 
-use minphp\Html\Html;
+use Minphp\Html\Html;
 
 /**
  * Javascript Helper, requires Html Helper
@@ -18,12 +18,12 @@ class Javascript extends Html
      * @var array An array of inline javascript blocks
      */
     private $js_inline = array();
-    
+
     /**
      * @var string The default path to use for javascript files
      */
     private $default_path;
-    
+
     /**
      * Constructs a Javascript Helper
      *
@@ -33,7 +33,7 @@ class Javascript extends Html
     {
         $this->setDefaultPath($default_path);
     }
-    
+
     /**
      * Sets the default path to use for all javascript requests
      *
@@ -46,7 +46,7 @@ class Javascript extends Html
         $this->default_path = $default_path;
         return $temp;
     }
-    
+
     /**
      * Return the HTML used to create the script tags and load the set javascript
      *
@@ -71,7 +71,7 @@ class Javascript extends Html
         }
         return $html;
     }
-    
+
     /**
      * Return the HTML used to create the inline javascript
      *
@@ -80,9 +80,9 @@ class Javascript extends Html
     public function getInline()
     {
         $html = "";
-        
+
         $num_docs = count($this->js_inline);
-        
+
         for ($i=0; $i<$num_docs; $i++) {
             $html .= $this->addCondition(
                 sprintf('<script type="text/javascript">%s</script>', $this->js_inline[$i]['data']),
@@ -92,7 +92,7 @@ class Javascript extends Html
         }
         return $html;
     }
-    
+
     /**
      * Sets the given javascript file into the structure view
      *
@@ -106,16 +106,16 @@ class Javascript extends Html
         if ($path == null) {
             $path = $this->default_path;
         }
-        
+
         $this->js_files[$location][] = array(
             'file' => $path . $file,
             'condition' => $condition,
             'hidden' => $hidden
         );
-        
+
         return $this;
     }
-    
+
     /**
      * Sets the given javascript data to be appended to the list of javascript data.
      *
@@ -129,10 +129,10 @@ class Javascript extends Html
             'condition' => $condition,
             'hidden' => $hidden
         );
-        
+
         return $this;
     }
-    
+
     /**
      * Unset all files that are currently set
      *
@@ -141,10 +141,10 @@ class Javascript extends Html
     public function unsetFiles()
     {
         $this->js_files = array();
-        
+
         return $this;
     }
-    
+
     /**
      * Unset all inline data that is currently set
      *
@@ -153,7 +153,7 @@ class Javascript extends Html
     public function unsetInline()
     {
         $this->js_inline = array();
-        
+
         return $this;
     }
 }
